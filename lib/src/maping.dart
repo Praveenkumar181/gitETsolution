@@ -18,7 +18,10 @@ class _MapViewState extends State<MapView> {
   }
 
   Future<void> _fetchLocations() async {
-    FirebaseFirestore.instance.collection('locations').snapshots().listen((snapshot) {
+    FirebaseFirestore.instance
+        .collection('locations')
+        .snapshots()
+        .listen((snapshot) {
       setState(() {
         _locations = snapshot.docs.map((doc) {
           GeoPoint geoPoint = doc.data()['location'];
@@ -47,20 +50,29 @@ class _MapViewState extends State<MapView> {
           children: [
             GoogleMap(
               onMapCreated: _onMapCreated,
+
               initialCameraPosition: _locations.isNotEmpty
                   ? CameraPosition(
-                target: _locations.first,
-                zoom: 12, // Adjust the zoom level as needed
-              )
-                  : CameraPosition(
-                target: LatLng(0, 0), // Default to (0, 0) if no locations are available
-                zoom: 2,
-              ),
+                      target: _locations.first,
+                      zoom: 12, // Adjust the zoom level as needed
+                    )
+                  : _locations.first != null
+                      ? CameraPosition(
+                          target: LatLng(_locations.first! as double,
+                              _locations.first as double),
+                          zoom: 12,
+                        )
+                      : CameraPosition(
+                          target: LatLng(0,
+                              0), // Default to (0, 0) if no locations are available
+                          zoom: 2,
+                        ),
+
               markers: _locations
                   .map((location) => Marker(
-                markerId: MarkerId(location.toString()),
-                position: location,
-              ))
+                        markerId: MarkerId(location.toString()),
+                        position: location,
+                      ))
                   .toSet(),
               myLocationEnabled: true, // Enable the my location button
               myLocationButtonEnabled: true, // Enable the my location button
