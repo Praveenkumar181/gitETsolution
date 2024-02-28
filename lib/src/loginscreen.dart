@@ -27,8 +27,6 @@ class _LoginPageState extends State<LoginPage> {
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best,
       );
-
-      // Handle the obtained position here
       print('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
     } catch (e) {
       print('Error obtaining location: $e');
@@ -66,8 +64,6 @@ class _LoginPageState extends State<LoginPage> {
           email: email,
           password: password,
         );
-
-        // If sign-in is successful, navigate to the next screen
         if (userCredential.user != null) {
           // Obtain the userId
           _startBackgroundLocationTracking();
@@ -109,11 +105,8 @@ class _LoginPageState extends State<LoginPage> {
           password: password,
         );
         String userId = userCredential.user!.uid;
-        // If registration is successful, navigate to the next screen
         if (userCredential.user != null) {
-          // Get the current location
           Position position = await _getCurrentLocation();
-          // Navigate to LocationScreen with latitude and longitude
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -173,7 +166,6 @@ class _LoginPageState extends State<LoginPage> {
                         password: password,
                       );
 
-                      // Check if authentication is successful
                       if (userCredential.user != null) {
                         // Get the current location
                         Position position = await _getCurrentLocation();
