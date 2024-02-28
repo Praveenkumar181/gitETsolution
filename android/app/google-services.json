@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "188048224167",
+    "project_id": "fir-partice-7a517",
+    "storage_bucket": "fir-partice-7a517.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188048224167:android:840b2aea0b5d5410065082",
+        "android_client_info": {
+          "package_name": "com.example.particeproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaRl8sLjjHw6WJlb29yy4TfJIZF8a2hsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
