@@ -14,7 +14,7 @@ class _MapViewState extends State<MapView> {
   @override
   void initState() {
     super.initState();
-    _fetchLocations(); // Fetch location data when the map view is initialized
+    _fetchLocations();
   }
 
   Future<void> _fetchLocations() async {
@@ -51,7 +51,7 @@ class _MapViewState extends State<MapView> {
           initialCameraPosition: _locations.isNotEmpty
         ? CameraPosition(
         target: _locations.first,
-          zoom: 12, // Adjust the zoom level as needed
+          zoom: 12,
         )
               : _locations.first != null
       ? CameraPosition(
@@ -59,7 +59,7 @@ class _MapViewState extends State<MapView> {
       zoom: 12,
     )
         : CameraPosition(
-    target: LatLng(0, 0), // Default to (0, 0) if no locations are available
+    target: LatLng(0, 0),
     zoom: 2,
     ),
 
@@ -69,8 +69,8 @@ class _MapViewState extends State<MapView> {
                 position: location,
               ))
                   .toSet(),
-              myLocationEnabled: true, // Enable the my location button
-              myLocationButtonEnabled: true, // Enable the my location button
+              myLocationEnabled: true,
+              myLocationButtonEnabled: true,
             ),
           ],
         ),
